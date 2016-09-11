@@ -34,18 +34,19 @@ public:
 
     vector < Edge > edges;
     vector < Edge > adjedges (char s);
-    vector < char > BFS (char s);
-    vector < char > DFS (char s);
+    vector < char >BFS (char s);
+    vector < char >DFS (char s);
     unordered_map < char, int >Dijkastras (char s);
 
 };
-vector < char > graph::BFS (char s)
+vector < char >
+graph::BFS (char s)
 {
   unordered_map < char, bool > visited;
 for (auto x:vertices)
     visited[x] = false;
 
-  vector < char > e;
+  vector < char >e;
   e.push_back (s);
   visited[s] = true;
   auto it = e.begin ();
