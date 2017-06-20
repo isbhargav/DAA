@@ -12,7 +12,7 @@ typedef vector <int> vi;
 typedef vector <char> vc;
 typedef vector <string> vs;
 #define N 1000000
-
+//take size 4*n
 ll tree[N];
 ll lazy[N];
 ll data[N];
@@ -28,14 +28,14 @@ void buildtree(int node,int start,int end)
     }
     else
     {
-        int mid=(end-start)/2;
+        int mid=(end+start)/2;
         buildtree(2*node,start,mid);
         buildtree(2*node+1,mid+1,end);
 
         tree[node]=tree[2*node]+tree[2*node+1];
     }
 }
-
+// Increment elements within range [i, j] with value value
 void update(int node,int start,int end,int l,int r,int val)
 {
    
@@ -66,7 +66,7 @@ void update(int node,int start,int end,int l,int r,int val)
         return;
     }
 
-    int mid=(end-start)/2;
+    int mid=(end+start)/2;
     update(2*node,start,mid,l,r,val);
     update(2*node+1,mid+1,end,l,r,val);
 
@@ -75,7 +75,7 @@ void update(int node,int start,int end,int l,int r,int val)
 
 
 }
-
+//Query tree to get max element value within range [i, j]
 ll query(int node,int start,int end,int l,int r)
 {
    if(start>end || start>r || end<l)  
@@ -99,7 +99,7 @@ ll query(int node,int start,int end,int l,int r)
    
    }
 
-   int mid=(end-start)/2;
+   int mid=(end+start)/2;
    ll s1=query(2*node,start,mid,l,r);
    ll s2=query(2*node+1,mid+1,end,l,r);
     
